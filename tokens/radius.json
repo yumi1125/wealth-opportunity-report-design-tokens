@@ -1,5 +1,5 @@
 {
-  "extra-small": {
+  "ExtraSmall": {
     "$type": "dimension",
     "$value": {
       "value": 4,
@@ -12,7 +12,7 @@
       }
     }
   },
-  "small": {
+  "Small": {
     "$type": "dimension",
     "$value": {
       "value": 6,
@@ -25,7 +25,7 @@
       }
     }
   },
-  "medium": {
+  "Medium": {
     "$type": "dimension",
     "$value": {
       "value": 8,
@@ -38,7 +38,7 @@
       }
     }
   },
-  "large": {
+  "Large": {
     "$type": "dimension",
     "$value": {
       "value": 12,
@@ -51,7 +51,7 @@
       }
     }
   },
-  "full": {
+  "Full": {
     "$type": "dimension",
     "$value": {
       "value": 999,

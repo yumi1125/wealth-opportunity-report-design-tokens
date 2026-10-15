@@ -19,12 +19,6 @@ const fileNames = new Map([
 ]);
 
 function fail(message) { throw new Error(message); }
-function slug(value) {
-  const result = value.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
-    .replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
-  if (!result) fail(`Invalid token path segment: ${value}`);
-  return result;
-}
 function nestedSet(rootObject, path, token, label) {
   let current = rootObject;
   for (const part of path.slice(0, -1)) {
@@ -75,8 +69,12 @@ function tokenFor(variable, modeId, snapshot) {
 function collectionOutput(collection, variables, mode, snapshot) {
   const output = {};
   const modeId = mode.modeId;
-  for (const variable of variables) {
-    const path = variable.name.split('/').map(slug);
+  const byId = new Map(variables.map(variable => [variable.id, variable]));
+  for (const variableId of collection.variableIds) {
+    const variable = byId.get(variableId);
+    if (!variable) fail(`Collection ${collection.name} references missing variable ${variableId}`);
+    const path = variable.name.split('/');
+    if (path.some(part => !part.trim())) fail(`Invalid Figma variable path: ${variable.name}`);
     nestedSet(output, path, tokenFor(variable, modeId, snapshot), variable.name);
   }
   return output;

@@ -1,6 +1,27 @@
 {
-  "background": {
-    "primary": {
+  "Brand": {
+    "Primary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.082353,
+          0.211765,
+          0.454902
+        ],
+        "alpha": 1,
+        "hex": "#153674"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:47:1073",
+          "name": "Brand/Primary"
+        }
+      }
+    }
+  },
+  "Background": {
+    "Primary": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -19,45 +40,7 @@
         }
       }
     },
-    "error": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.996078,
-          0.921569,
-          0.92549
-        ],
-        "alpha": 1,
-        "hex": "#FEEBEC"
-      },
-      "$extensions": {
-        "figma": {
-          "variableId": "VariableID:45:1135",
-          "name": "Background/Error"
-        }
-      }
-    },
-    "accent": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.866667,
-          0.909804,
-          0.996078
-        ],
-        "alpha": 1,
-        "hex": "#DDE8FE"
-      },
-      "$extensions": {
-        "figma": {
-          "variableId": "VariableID:45:1160",
-          "name": "Background/Accent"
-        }
-      }
-    },
-    "secondary": {
+    "Secondary": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -81,7 +64,7 @@
         }
       }
     },
-    "tertiary": {
+    "Tertiary": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -105,7 +88,45 @@
         }
       }
     },
-    "disabled": {
+    "Accent": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.866667,
+          0.909804,
+          0.996078
+        ],
+        "alpha": 1,
+        "hex": "#DDE8FE"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:45:1160",
+          "name": "Background/Accent"
+        }
+      }
+    },
+    "AccentSurface": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.890196,
+          0.929412,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#E3EDFF"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:67:7835",
+          "name": "Background/AccentSurface"
+        }
+      }
+    },
+    "Disabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -129,85 +150,28 @@
         }
       }
     },
-    "accent-surface": {
+    "Error": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.890196,
-          0.929412,
-          1
+          0.996078,
+          0.921569,
+          0.92549
         ],
         "alpha": 1,
-        "hex": "#E3EDFF"
+        "hex": "#FEEBEC"
       },
       "$extensions": {
         "figma": {
-          "variableId": "VariableID:67:7835",
-          "name": "Background/AccentSurface"
+          "variableId": "VariableID:45:1135",
+          "name": "Background/Error"
         }
       }
     }
   },
-  "text": {
-    "secondary-on-color-alpha-2": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          1,
-          1,
-          1
-        ],
-        "alpha": 0.7,
-        "hex": "#FFFFFF"
-      },
-      "$extensions": {
-        "figma": {
-          "variableId": "VariableID:45:1079",
-          "name": "Text/SecondaryOnColorAlpha 2"
-        }
-      }
-    },
-    "primary-on-color-alpha-1": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0,
-          0,
-          0
-        ],
-        "alpha": 0.87451,
-        "hex": "#000000"
-      },
-      "$extensions": {
-        "figma": {
-          "variableId": "VariableID:45:1083",
-          "name": "Text/PrimaryOnColorAlpha 1"
-        }
-      }
-    },
-    "error": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.807843,
-          0.172549,
-          0.192157
-        ],
-        "alpha": 1,
-        "hex": "#CE2C31"
-      },
-      "$extensions": {
-        "figma": {
-          "variableId": "VariableID:45:1134",
-          "name": "Text/Error"
-        }
-      }
-    },
-    "primary": {
+  "Text": {
+    "Primary": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -231,7 +195,26 @@
         }
       }
     },
-    "secondary": {
+    "PrimaryOnColorAlpha 1": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.87451,
+        "hex": "#000000"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:45:1083",
+          "name": "Text/PrimaryOnColorAlpha 1"
+        }
+      }
+    },
+    "Secondary": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -255,7 +238,26 @@
         }
       }
     },
-    "unselected": {
+    "SecondaryOnColorAlpha 2": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.7,
+        "hex": "#FFFFFF"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:45:1079",
+          "name": "Text/SecondaryOnColorAlpha 2"
+        }
+      }
+    },
+    "Unselected": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -279,26 +281,26 @@
         }
       }
     },
-    "processing": {
+    "Disabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.886275,
-          0.639216,
-          0.211765
+          0.447773,
+          0.447773,
+          0.447773
         ],
         "alpha": 1,
-        "hex": "#E2A336"
+        "hex": "#727272"
       },
       "$extensions": {
         "figma": {
-          "variableId": "VariableID:47:1634",
-          "name": "Text/Processing"
+          "variableId": "VariableID:48:1713",
+          "name": "Text/Disabled"
         }
       }
     },
-    "complete": {
+    "Complete": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -317,28 +319,47 @@
         }
       }
     },
-    "disabled": {
+    "Error": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.447773,
-          0.447773,
-          0.447773
+          0.807843,
+          0.172549,
+          0.192157
         ],
         "alpha": 1,
-        "hex": "#727272"
+        "hex": "#CE2C31"
       },
       "$extensions": {
         "figma": {
-          "variableId": "VariableID:48:1713",
-          "name": "Text/Disabled"
+          "variableId": "VariableID:45:1134",
+          "name": "Text/Error"
+        }
+      }
+    },
+    "Processing": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.886275,
+          0.639216,
+          0.211765
+        ],
+        "alpha": 1,
+        "hex": "#E2A336"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:47:1634",
+          "name": "Text/Processing"
         }
       }
     }
   },
-  "icon": {
-    "unselected": {
+  "Icon": {
+    "Unselected": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -362,7 +383,7 @@
         }
       }
     },
-    "accent": {
+    "Accent": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -381,7 +402,7 @@
         }
       }
     },
-    "background-accent": {
+    "Background Accent": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -401,8 +422,8 @@
       }
     }
   },
-  "border": {
-    "default": {
+  "Border": {
+    "Default": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -426,7 +447,7 @@
         }
       }
     },
-    "divider": {
+    "Divider": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -446,8 +467,8 @@
       }
     }
   },
-  "overlay": {
-    "dim": {
+  "Overlay": {
+    "Dim": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -467,29 +488,8 @@
       }
     }
   },
-  "brand": {
-    "primary": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.082353,
-          0.211765,
-          0.454902
-        ],
-        "alpha": 1,
-        "hex": "#153674"
-      },
-      "$extensions": {
-        "figma": {
-          "variableId": "VariableID:47:1073",
-          "name": "Brand/Primary"
-        }
-      }
-    }
-  },
-  "base": {
-    "white": {
+  "Base": {
+    "White": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -508,7 +508,7 @@
         }
       }
     },
-    "black": {
+    "Black": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",

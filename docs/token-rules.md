@@ -2,7 +2,7 @@
 
 **维护与发布**　设计师在 Figma 维护值；GitHub `main` 保存已审核交付。每次修改先导出快照、生成 JSON、提 Pull Request；合并后开发再接入。变量标识使用英文，说明文字使用中文。
 
-**命名**　沿用 Figma 当前的语义层级，用 `/` 分隔分类和名称，如 `Background/AccentSurface`。导出 JSON 使用小写 kebab-case 路径，如 `background.accent-surface`。同一概念跨国家模式保持同一变量名。新增变量优先按用途/层级命名，不写具体色值；改名要在变更记录注明旧名和新名，开发同步更新引用。Figma 原名和 ID 仍保存在 `$extensions.figma`。
+**命名**　沿用 Figma 当前的集合、分组与变量名，用 `/` 表示路径，如 `Background/AccentSurface`。导出 JSON 保留原有大小写和路径层级，即 `Background → AccentSurface`；浏览页在 `Background` 分组显示 `AccentSurface`。同一概念跨国家模式保持同一变量名。新增变量优先按用途/层级命名，不写具体色值；改名要在变更记录注明旧名和新名，开发同步更新引用。Figma 原名和 ID 仍保存在 `$extensions.figma`。
 
 **四类变量**　`Typography` 管字体、字号、字重；`Dimensions` 管间距及描边宽度；`Radius` 管圆角；`Semantic Color` 管按界面含义使用的颜色。只使用已定义的值，不通过改动 Figma 原变量来适配代码。当前导出分别为 8、13、5、25 个变量。
 

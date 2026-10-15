@@ -1,5 +1,5 @@
 {
-  "spacing": {
+  "Spacing": {
     "1px": {
       "$type": "dimension",
       "$value": {
@@ -118,8 +118,8 @@
       }
     }
   },
-  "stroke": {
-    "hairline": {
+  "Stroke": {
+    "Hairline": {
       "$type": "dimension",
       "$value": {
         "value": 0.5,
@@ -145,7 +145,7 @@
         }
       }
     },
-    "medium": {
+    "Medium": {
       "$type": "dimension",
       "$value": {
         "value": 1.5,

@@ -1,6 +1,6 @@
 {
-  "family": {
-    "primary": {
+  "Family": {
+    "Primary": {
       "$type": "fontFamily",
       "$value": "Pingfang SC",
       "$extensions": {
@@ -11,8 +11,8 @@
       }
     }
   },
-  "size": {
-    "caption": {
+  "Size": {
+    "Caption": {
       "$type": "dimension",
       "$value": {
         "value": 12,
@@ -25,7 +25,7 @@
         }
       }
     },
-    "body": {
+    "Body": {
       "$type": "dimension",
       "$value": {
         "value": 14,
@@ -38,7 +38,7 @@
         }
       }
     },
-    "heading2": {
+    "Heading2": {
       "$type": "dimension",
       "$value": {
         "value": 16,
@@ -51,7 +51,7 @@
         }
       }
     },
-    "heading1": {
+    "Heading1": {
       "$type": "dimension",
       "$value": {
         "value": 20,
@@ -65,8 +65,8 @@
       }
     }
   },
-  "weight": {
-    "regular": {
+  "Weight": {
+    "Regular": {
       "$type": "fontWeight",
       "$value": 400,
       "$extensions": {
@@ -77,7 +77,7 @@
         }
       }
     },
-    "medium": {
+    "Medium": {
       "$type": "fontWeight",
       "$value": 500,
       "$extensions": {
@@ -88,7 +88,7 @@
         }
       }
     },
-    "semi-bold": {
+    "SemiBold": {
       "$type": "fontWeight",
       "$value": 600,
       "$extensions": {

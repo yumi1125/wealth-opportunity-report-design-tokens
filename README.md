@@ -4,7 +4,7 @@
 
 ## 变量库依据与组织规则
 
-这份交付从[现有 Figma 设计系统文件](https://www.figma.com/design/946GZfDFpPwburJkuZy9mA)的**本地变量和文本样式**读取，不依据截图重新造一套值。按变量在界面中承担的作用组织为四类：`Typography`（字体、字号、字重）、`Dimensions`（间距、描边宽度）、`Radius`（圆角）、`Semantic Color`（按背景、文本、图标、边框等含义命名的颜色）。Figma 中的英文路径如 `Background/AccentSurface` 转成 JSON 中的小写 kebab-case 路径；`$extensions.figma` 保留原名、变量 ID 与别名来源，便于回查。
+这份交付从[现有 Figma 设计系统文件](https://www.figma.com/design/946GZfDFpPwburJkuZy9mA)的**本地变量和文本样式**读取，不依据截图重新造一套值。按 Figma 的**集合 → 分组 → 变量名**组织：`Typography`（字体排印）、`Dimensions`（大小）、`Radius`（圆角）、`Semantic Color`（语义颜色）。例如 Figma 的 `Text/Primary` 在 JSON 中保持为 `Text → Primary`，在浏览页中选择 `Text` 分组后显示变量名 `Primary`。不会另起一套 kebab-case 命名。`$extensions.figma` 还保留变量 ID、原名与别名来源，便于回查。
 
 颜色按 Figma 的 Indonesia、Kenya 两个模式分别交付，同一个语义变量在两国可有不同值；其他三类当前共用一套。文本样式单独交付，避免只看字号而漏掉字重及绑定关系。当前仓库记录的是**导出当时的变量库快照**，并未在本次导出中重新审计每个变量是否仍被页面或组件绑定。新增、改名或删除前，应回到 Figma 检查实际使用情况。更细的命名及变更约定见[变量交付规则](docs/token-rules.md)。
 
@@ -30,7 +30,7 @@
 3. **用 Git 更新**：运行 `git clone https://github.com/yumi1125/wealth-opportunity-report-design-tokens.git`，以后在本地仓库运行 `git pull`。克隆后打开 `viewer/index.html`；需要原始数据时读取 `tokens/` 下的 JSON。
 4. **只下载某份 JSON**：在 GitHub 仓库打开 `tokens/` 中目标文件，点击 **Download raw file**（下载原始文件）。若 GitHub 界面只显示 **Raw**，打开后使用浏览器“另存为”，并保留 `.json` 扩展名。
 
-浏览界面可按分类、英文路径或 Figma 原名搜索，并切换 Indonesia / Kenya 查看色值和透明度；还能查看尺寸、圆角、文本样式与别名来源。**它只用于查看和核对，不能编辑或同步回 Figma。** 设计师维护变量时仍在 Figma 操作，开发通过 GitHub PR 审核交付值。
+浏览界面按 Figma 集合与分组展示变量，搜索原始路径或别名；语义颜色可并排对比 Indonesia / Kenya，也可只看其中一国；还能查看透明度、尺寸、圆角、文本样式与别名来源。**它只用于查看和核对，不能编辑或同步回 Figma。** 设计师维护变量时仍在 Figma 操作，开发通过 GitHub PR 审核交付值。
 
 ## 每次更新
 

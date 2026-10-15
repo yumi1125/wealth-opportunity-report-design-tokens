@@ -5,6 +5,7 @@ import { Script } from 'node:vm';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const html = await readFile(join(root, 'viewer', 'index.html'), 'utf8');
+const snapshot = JSON.parse(await readFile(join(root, 'source', 'figma-snapshot.json'), 'utf8'));
 const dataMatch = html.match(/<script id="token-data" type="application\/json">([^<]+)<\/script>/);
 const appMatch = html.match(/<script>\s*(\(\(\) => \{[\s\S]*?\}\)\(\);)\s*<\/script>/);
 if (!dataMatch || !appMatch) throw new Error('Viewer data or script is missing');
@@ -19,6 +20,43 @@ const counts = {
   Radius: flatten(files['radius.json']).length,
   'Semantic Color': flatten(files['semantic-color.indonesia.json']).length
 };
+const fileFor = new Map([
+  ['Typography', 'typography.json'], ['Dimensions', 'dimensions.json'],
+  ['Radius', 'radius.json'], ['Semantic Color', 'semantic-color.indonesia.json']
+]);
+for (const collection of snapshot.collections) {
+  const output = files[fileFor.get(collection.name)];
+  const expectedPaths = collection.variableIds.map(id => {
+    const variable = snapshot.variables.find(item => item.id === id);
+    if (!variable) throw new Error(`Missing source variable ${id}`);
+    const token = variable.name.split('/').reduce((group, segment) => group?.[segment], output);
+    if (token?.$extensions?.figma?.variableId !== id || token.$extensions.figma.name !== variable.name) {
+      throw new Error(`Viewer path differs from Figma: ${variable.name}`);
+    }
+    return variable.name;
+  });
+  const outputPaths = [];
+  const visit = (group, parents = []) => {
+    for (const [segment, value] of Object.entries(group)) {
+      if (value && Object.hasOwn(value, '$value')) outputPaths.push([...parents, segment].join('/'));
+      else visit(value, [...parents, segment]);
+    }
+  };
+  visit(output);
+  if (JSON.stringify(outputPaths.sort()) !== JSON.stringify(expectedPaths.sort())) {
+    throw new Error(`Viewer names differ from Figma: ${collection.name}`);
+  }
+  if (collection.name === 'Semantic Color') {
+    const kenya = files['semantic-color.kenya.json'];
+    for (const id of collection.variableIds) {
+      const variable = snapshot.variables.find(item => item.id === id);
+      const token = variable.name.split('/').reduce((group, segment) => group?.[segment], kenya);
+      if (token?.$extensions?.figma?.variableId !== id) {
+        throw new Error(`Kenya viewer path differs from Figma: ${variable.name}`);
+      }
+    }
+  }
+}
 for (const [name, count] of Object.entries(counts)) {
   if (count !== manifest.collectionCounts[name]) throw new Error(`Wrong viewer count for ${name}`);
 }
