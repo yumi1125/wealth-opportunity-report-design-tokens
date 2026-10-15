@@ -1,5 +1,10 @@
 # Wealth Opportunity Report · Design Tokens
 
+## 快速入口
+
+- **浏览变量**：[打开浏览页文件](https://github.com/yumi1125/wealth-opportunity-report-design-tokens/blob/main/viewer/index.html)。此仓库为私有；登录并获得权限后，下载该 HTML 文件，在浏览器中打开即可交互查看。GitHub 的文件预览显示源码，不是已部署的网站。
+- **开发下载**：[下载当前正式版 ZIP](https://github.com/yumi1125/wealth-opportunity-report-design-tokens/archive/refs/heads/main.zip) · [查看 `tokens/` JSON](https://github.com/yumi1125/wealth-opportunity-report-design-tokens/tree/main/tokens) · [复制仓库地址](https://github.com/yumi1125/wealth-opportunity-report-design-tokens)。ZIP 包含变量 JSON、文本样式、浏览页及导出工具；接入 App 请使用 `tokens/` 下的 JSON。
+
 本仓库交付移动端设计变量。**Figma 是设计值的唯一编辑入口；GitHub `main` 分支上的 JSON 是开发接入的已审核版本。** 当前先交付平台无关的 JSON，不生成 Flutter、iOS、Android 或 React Native 代码。仓库为私有，需先获得仓库访问权限。
 
 ## 变量库依据与组织规则
@@ -26,7 +31,7 @@
 ## 下载与查看
 
 1. 先由仓库管理员将设计师或开发加入[私有仓库](https://github.com/yumi1125/wealth-opportunity-report-design-tokens)；登录有权限的 GitHub 账号。
-2. **下载整个交付包**：在仓库页面选择已审核的 `main` 分支，点击绿色 **Code → Download ZIP**，解压后双击 `viewer/index.html`。页面已内嵌变量数据，无需启动服务器，也不需要联网。首次 PR 合并前，如需预览待审核版本，可在分支菜单切换到 `codex/initial-design-token-handoff` 再下载。
+2. **下载整个交付包**：点击上方“下载当前正式版 ZIP”，或在仓库 `main` 分支点击绿色 **Code → Download ZIP**。解压后双击 `viewer/index.html`。页面已内嵌变量数据，无需启动服务器，也不需要联网。
 3. **用 Git 更新**：运行 `git clone https://github.com/yumi1125/wealth-opportunity-report-design-tokens.git`，以后在本地仓库运行 `git pull`。克隆后打开 `viewer/index.html`；需要原始数据时读取 `tokens/` 下的 JSON。
 4. **只下载某份 JSON**：在 GitHub 仓库打开 `tokens/` 中目标文件，点击 **Download raw file**（下载原始文件）。若 GitHub 界面只显示 **Raw**，打开后使用浏览器“另存为”，并保留 `.json` 扩展名。
 
