@@ -3,7 +3,6 @@
   "framework": null,
   "buildCommand": "npm run build:site",
   "outputDirectory": "dist",
-  "public": false,
   "headers": [
     {
       "source": "/(.*)",
