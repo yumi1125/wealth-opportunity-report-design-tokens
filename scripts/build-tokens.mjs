@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const snapshotPath = join(root, 'source', 'figma-snapshot.json');
 const outputDir = join(root, 'tokens');
+const viewerTemplatePath = join(root, 'viewer', 'template.html');
+const viewerPath = join(root, 'viewer', 'index.html');
 const modeNames = new Map([['印尼', 'indonesia'], ['Indonesia', 'indonesia'], ['肯尼亚', 'kenya'], ['Kenya', 'kenya']]);
 const styleNames = new Map([['一级标题', 'heading1'], ['二级标题', 'heading2'], ['正文', 'body'], ['辅助文字', 'caption']]);
 const fontWeights = new Map([['Regular', 400], ['Medium', 500], ['Semibold', 600], ['SemiBold', 600], ['Semi Bold', 600]]);
@@ -126,6 +128,15 @@ function build(snapshot) {
   return files;
 }
 
+function viewerContent(template, files) {
+  const data = Object.fromEntries(files);
+  // The JSON lives inside an inert script tag so the viewer opens via file://.
+  const encoded = JSON.stringify(data).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
+  const marker = '<!-- EMBEDDED_TOKEN_DATA -->';
+  if (!template.includes(marker)) fail('Viewer template data marker is missing');
+  return template.replace(marker, `<script id="token-data" type="application/json">${encoded}</script>`);
+}
+
 const flag = process.argv[2];
 if (!['--write', '--check'].includes(flag)) fail('Use --write or --check');
 const snapshot = JSON.parse(await readFile(snapshotPath, 'utf8'));
@@ -141,4 +152,12 @@ for (const [name, data] of files) {
     if (current !== content) fail(`Outdated generated file: ${name}. Run npm run build:tokens`);
   }
 }
-process.stdout.write(`${flag === '--write' ? 'Wrote' : 'Checked'} ${files.size} files, ${snapshot.variables.length} variables, ${snapshot.styles.length} text styles.\n`);
+const template = await readFile(viewerTemplatePath, 'utf8');
+const html = viewerContent(template, files);
+if (flag === '--write') await writeFile(viewerPath, html);
+else {
+  let current;
+  try { current = await readFile(viewerPath, 'utf8'); } catch { fail('Missing generated viewer/index.html'); }
+  if (current !== html) fail('Outdated viewer/index.html. Run npm run build:tokens');
+}
+process.stdout.write(`${flag === '--write' ? 'Wrote' : 'Checked'} ${files.size} token files and viewer/index.html, ${snapshot.variables.length} variables, ${snapshot.styles.length} text styles.\n`);

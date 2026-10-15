@@ -1,6 +1,12 @@
 # Wealth Opportunity Report · Design Tokens
 
-本仓库交付移动端设计变量。**Figma 是设计值的维护入口；GitHub `main` 分支上的 JSON 是开发接入的已审核版本。** 当前先交付平台无关的 JSON，不生成 Flutter、iOS、Android 或 React Native 代码。
+本仓库交付移动端设计变量。**Figma 是设计值的唯一编辑入口；GitHub `main` 分支上的 JSON 是开发接入的已审核版本。** 当前先交付平台无关的 JSON，不生成 Flutter、iOS、Android 或 React Native 代码。仓库为私有，需先获得仓库访问权限。
+
+## 变量库依据与组织规则
+
+这份交付从[现有 Figma 设计系统文件](https://www.figma.com/design/946GZfDFpPwburJkuZy9mA)的**本地变量和文本样式**读取，不依据截图重新造一套值。按变量在界面中承担的作用组织为四类：`Typography`（字体、字号、字重）、`Dimensions`（间距、描边宽度）、`Radius`（圆角）、`Semantic Color`（按背景、文本、图标、边框等含义命名的颜色）。Figma 中的英文路径如 `Background/AccentSurface` 转成 JSON 中的小写 kebab-case 路径；`$extensions.figma` 保留原名、变量 ID 与别名来源，便于回查。
+
+颜色按 Figma 的 Indonesia、Kenya 两个模式分别交付，同一个语义变量在两国可有不同值；其他三类当前共用一套。文本样式单独交付，避免只看字号而漏掉字重及绑定关系。当前仓库记录的是**导出当时的变量库快照**，并未在本次导出中重新审计每个变量是否仍被页面或组件绑定。新增、改名或删除前，应回到 Figma 检查实际使用情况。更细的命名及变更约定见[变量交付规则](docs/token-rules.md)。
 
 ## 当前交付
 
@@ -13,14 +19,24 @@
 | `tokens/semantic-color.kenya.json` | Kenya 语义颜色 |
 | `tokens/text-styles.json` | 四个文本样式及其变量绑定 |
 | `tokens/manifest.json` | 数量及交付文件清单 |
+| `viewer/index.html` | 可离线打开的只读变量浏览界面 |
 
 `source/figma-snapshot.json` 是从 [Figma 设计系统](https://www.figma.com/design/946GZfDFpPwburJkuZy9mA) 读取的原始快照，供复核和重新生成。每个 token 的 `$extensions.figma` 保留 Figma ID 和原名；别名还保留目标 ID/名称，同时给开发提供已解析的颜色值。导出不会改动 Figma 变量。
+
+## 下载与查看
+
+1. 先由仓库管理员将设计师或开发加入[私有仓库](https://github.com/yumi1125/wealth-opportunity-report-design-tokens)；登录有权限的 GitHub 账号。
+2. **下载整个交付包**：在仓库页面选择已审核的 `main` 分支，点击绿色 **Code → Download ZIP**，解压后双击 `viewer/index.html`。页面已内嵌变量数据，无需启动服务器，也不需要联网。首次 PR 合并前，如需预览待审核版本，可在分支菜单切换到 `codex/initial-design-token-handoff` 再下载。
+3. **用 Git 更新**：运行 `git clone https://github.com/yumi1125/wealth-opportunity-report-design-tokens.git`，以后在本地仓库运行 `git pull`。克隆后打开 `viewer/index.html`；需要原始数据时读取 `tokens/` 下的 JSON。
+4. **只下载某份 JSON**：在 GitHub 仓库打开 `tokens/` 中目标文件，点击 **Download raw file**（下载原始文件）。若 GitHub 界面只显示 **Raw**，打开后使用浏览器“另存为”，并保留 `.json` 扩展名。
+
+浏览界面可按分类、英文路径或 Figma 原名搜索，并切换 Indonesia / Kenya 查看色值和透明度；还能查看尺寸、圆角、文本样式与别名来源。**它只用于查看和核对，不能编辑或同步回 Figma。** 设计师维护变量时仍在 Figma 操作，开发通过 GitHub PR 审核交付值。
 
 ## 每次更新
 
 1. 设计师在 Figma 修改变量与文本样式，检查 Indonesia、Kenya 代表页面。
-2. 在 Figma 桌面版导入 `figma-export/manifest.json` 作为开发插件；打开指定设计系统文件，运行 **Mobile tokens snapshot export**，下载 `figma-snapshot.json` 并替换 `source/figma-snapshot.json`。首次导入路径：插件 → 开发 → 从清单导入插件。普通开发插件读不到文件 key，插件以现有 Typography 集合 ID 校验文件，避免在其他文件误导出。插件只读，不上传数据。
-3. 运行 `npm run build:tokens` 和 `npm run check:tokens`。需要 Node.js 20 或更新版本，无需安装依赖。
+2. 首次使用时，在 Figma 桌面版选择 **插件 → 开发 → 从清单导入插件**，选取仓库里的 `figma-export/manifest.json`。打开指定设计系统文件，运行 **Mobile tokens snapshot export**，下载 `figma-snapshot.json`，替换仓库的 `source/figma-snapshot.json`。以后无需重复导入插件。普通开发插件读不到文件 key，插件以现有 Typography 集合 ID 校验文件，避免在其他文件误导出。插件只读，不上传数据。
+3. 运行 `npm run build:tokens` 重新生成 `tokens/` JSON 和 `viewer/index.html`，再运行 `npm run check:tokens` 校验两者与快照一致。需要 Node.js 20 或更新版本，无需安装依赖。
 4. 按 [变量交付规则](docs/token-rules.md) 检查变化，在 [变更记录](CHANGELOG.md) 写明新增、修改、删除和受影响页面/组件。
 5. 提交 GitHub Pull Request；开发检查 JSON 差异、两国模式及别名。合并后接入 App。后续迭代重复此流程。
 

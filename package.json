@@ -7,6 +7,6 @@
   },
   "scripts": {
     "build:tokens": "node scripts/build-tokens.mjs --write",
-    "check:tokens": "node scripts/build-tokens.mjs --check"
+    "check:tokens": "node scripts/build-tokens.mjs --check && node scripts/check-viewer.mjs"
   }
 }

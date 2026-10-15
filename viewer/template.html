@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>财富先机报告 · 设计变量</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1f2937; background: #f4f7fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    .shell { max-width: 1440px; margin: auto; padding: 32px 28px 60px; }
+    .eyebrow { margin: 0 0 8px; color: #3571d9; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(27px, 3vw, 38px); letter-spacing: -.04em; }
+    .intro { max-width: 780px; margin: 10px 0 0; color: #5a6575; line-height: 1.65; }
+    .intro strong { color: #26364f; }
+    .meta { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+    .metric { min-width: 150px; padding: 15px 18px; border: 1px solid #dce5f2; border-radius: 14px; background: white; box-shadow: 0 4px 15px #1b3b7210; }
+    .metric b { display: block; font-size: 25px; line-height: 1.1; }
+    .metric span { display: block; margin-top: 5px; color: #66758b; font-size: 12px; }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px; border: 1px solid #dce5f2; border-radius: 16px; background: white; }
+    .search { flex: 1 1 260px; min-width: 180px; }
+    input, select { width: 100%; min-height: 40px; padding: 8px 11px; border: 1px solid #cfd9e6; border-radius: 9px; background: white; color: #24334b; }
+    input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid #82b2ff; outline-offset: 2px; }
+    .mode { display: flex; align-items: center; gap: 8px; color: #65728a; font-size: 13px; }
+    .mode select { width: 150px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 8px; }
+    .tab { padding: 9px 13px; border: 1px solid #d5deea; border-radius: 999px; background: white; color: #42546c; }
+    .tab[aria-selected="true"] { border-color: #276cde; background: #eaf2ff; color: #1354bd; font-weight: 700; }
+    .count { margin: 16px 2px; color: #647187; font-size: 13px; }
+    .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; }
+    .card { min-height: 154px; padding: 18px; border: 1px solid #dce5f2; border-radius: 14px; background: white; box-shadow: 0 3px 12px #1b3b720b; }
+    .row { display: flex; gap: 15px; align-items: start; }
+    .preview { flex: 0 0 62px; width: 62px; height: 62px; border: 1px solid #dbe2ec; border-radius: 10px; background: #f5f7fa; }
+    .checker { background-color: #fff; background-image: linear-gradient(45deg, #e6e9ee 25%, transparent 25%), linear-gradient(-45deg, #e6e9ee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e6e9ee 75%), linear-gradient(-45deg, transparent 75%, #e6e9ee 75%); background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0; overflow: hidden; }
+    .swatch { width: 100%; height: 100%; }
+    .radius-preview { border: 2px solid #2778e5; background: #e9f3ff; width: 50px; height: 50px; margin: 5px; }
+    .dimension-preview { display: flex; justify-content: center; align-items: center; color: #2778e5; font-weight: 700; background: #e9f3ff; }
+    .type-preview { display: flex; justify-content: center; align-items: center; color: #276cde; font-size: 25px; font-weight: 600; }
+    .title { margin: 0; font-size: 16px; overflow-wrap: anywhere; }
+    .path { margin: 5px 0 0; color: #7a8798; font-size: 12px; overflow-wrap: anywhere; }
+    .value { margin: 12px 0 0; font-size: 14px; font-weight: 700; overflow-wrap: anywhere; }
+    .detail { margin: 7px 0 0; color: #647187; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+    .empty { padding: 48px; border: 1px dashed #cbd8e8; border-radius: 14px; color: #647187; text-align: center; background: white; }
+    footer { margin-top: 30px; color: #748096; font-size: 12px; line-height: 1.7; }
+    @media (max-width: 620px) { .shell { padding: 24px 15px 40px; } .metric { flex: 1 1 42%; min-width: 0; } .list { grid-template-columns: 1fr; } .mode { width: 100%; } .mode select { flex: 1; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <p class="eyebrow">Design tokens / Read only</p>
+    <h1>财富先机报告 · 设计变量</h1>
+    <p class="intro">此页是仓库中 JSON 的<strong>离线可视化快照</strong>。设计师在 Figma 修改变量，重新导出并提交审核后，此页随 JSON 一起更新。此页不能直接编辑变量。</p>
+    <section class="meta" id="metrics" aria-label="变量数量"></section>
+    <div class="toolbar">
+      <label class="search"><input id="search" type="search" placeholder="搜索变量名、路径或别名" aria-label="搜索变量"></label>
+      <label class="mode">语义颜色模式 <select id="mode"><option value="indonesia">Indonesia</option><option value="kenya">Kenya</option></select></label>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="变量分类"></nav>
+    <p class="count" id="result-count" aria-live="polite"></p>
+    <section class="list" id="list" aria-label="变量列表"></section>
+    <footer>数据来源：Figma 当前变量库快照。色值显示 Hex、透明度及原始 sRGB 数值；使用时请保留 alpha。若需修改，请回到 Figma，并按仓库 README 中的步骤重新导出。</footer>
+  </main>
+  <!-- EMBEDDED_TOKEN_DATA -->
+  <script>
+    (() => {
+      const files = JSON.parse(document.getElementById('token-data').textContent);
+      const manifest = files['manifest.json'];
+      const categories = [
+        ['Semantic Color', mode => files[`semantic-color.${mode}.json`]],
+        ['Typography', () => files['typography.json']],
+        ['Dimensions', () => files['dimensions.json']],
+        ['Radius', () => files['radius.json']],
+        ['Text Styles', () => files['text-styles.json'].styles]
+      ];
+      const state = { category: 'Semantic Color', mode: 'indonesia', query: '' };
+      const metrics = document.getElementById('metrics');
+      const tabs = document.getElementById('tabs');
+      const list = document.getElementById('list');
+      const resultCount = document.getElementById('result-count');
+      const make = (tag, className, content) => {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (content !== undefined) element.textContent = String(content);
+        return element;
+      };
+      function flatten(group, parents = []) {
+        return Object.entries(group).flatMap(([key, value]) =>
+          value && Object.hasOwn(value, '$value')
+            ? [{ path: [...parents, key].join('/'), token: value }]
+            : flatten(value, [...parents, key]));
+      }
+      function addMetric(count, label) {
+        const card = make('div', 'metric');
+        card.append(make('b', '', count), make('span', '', label));
+        metrics.append(card);
+      }
+      addMetric(manifest.variableCount, '变量总数');
+      addMetric(manifest.collectionCounts['Semantic Color'], '每个国家的语义颜色');
+      addMetric(manifest.semanticColorModes.length, '国家模式');
+      addMetric(manifest.textStyleCount, '文本样式');
+      for (const [name] of categories) {
+        const button = make('button', 'tab', name);
+        button.type = 'button';
+        button.setAttribute('aria-selected', String(name === state.category));
+        button.onclick = () => { state.category = name; render(); };
+        tabs.append(button);
+      }
+      document.getElementById('mode').onchange = event => { state.mode = event.target.value; render(); };
+      document.getElementById('search').oninput = event => { state.query = event.target.value.trim().toLocaleLowerCase(); render(); };
+      function previewFor(token, category) {
+        const preview = make('div', 'preview');
+        const value = token.$value;
+        if (category === 'Semantic Color') {
+          preview.classList.add('checker');
+          const swatch = make('div', 'swatch');
+          const rgb = value.components.map(component => Math.round(component * 255));
+          swatch.style.backgroundColor = `rgba(${rgb.join(',')},${value.alpha})`;
+          preview.append(swatch);
+        } else if (category === 'Radius') {
+          const shape = make('div', 'radius-preview');
+          shape.style.borderRadius = `${Math.min(value.value, 999)}px`;
+          preview.append(shape);
+        } else if (category === 'Dimensions') {
+          preview.classList.add('dimension-preview');
+          preview.textContent = `${value.value}px`;
+        } else {
+          preview.classList.add('type-preview');
+          preview.textContent = category === 'Text Styles' ? 'Ag' : 'T';
+        }
+        return preview;
+      }
+      function tokenCard(entry, category) {
+        const { path, token } = entry;
+        const figma = token.$extensions?.figma;
+        const card = make('article', 'card');
+        const row = make('div', 'row');
+        const info = make('div', 'info');
+        info.append(make('h2', 'title', figma?.name ?? path), make('p', 'path', path));
+        row.append(previewFor(token, category), info);
+        card.append(row);
+        const value = token.$value;
+        let label;
+        if (token.$type === 'color') label = `${value.hex} · ${Math.round(value.alpha * 10000) / 100}%`;
+        else if (token.$type === 'dimension') label = `${value.value} ${value.unit}`;
+        else if (token.$type === 'fontWeight') label = `${value} · ${figma?.figmaValue ?? ''}`;
+        else label = value;
+        card.append(make('p', 'value', label));
+        if (token.$type === 'color') card.append(make('p', 'detail', `sRGB ${value.components.join(', ')}`));
+        if (figma?.alias) card.append(make('p', 'detail', `Figma 别名：${figma.alias.name}${figma.alias.via ? ` → ${figma.alias.via.name}` : ''}`));
+        return card;
+      }
+      function styleCard([key, style]) {
+        const card = make('article', 'card');
+        const row = make('div', 'row');
+        const preview = make('div', 'preview type-preview', 'Ag');
+        preview.style.fontSize = `${Math.min(style.fontSize.value, 28)}px`;
+        const info = make('div', 'info');
+        info.append(make('h2', 'title', key), make('p', 'path', `Figma：${style.figmaName}`));
+        row.append(preview, info);
+        card.append(row, make('p', 'value', `${style.fontFamily} · ${style.fontStyle} · ${style.fontSize.value}${style.fontSize.unit}`));
+        const bindings = Object.entries(style.variableBindings ?? {}).map(([field, target]) => `${field} → ${target.name}`).join('；');
+        card.append(make('p', 'detail', `行高：${style.lineHeight.unit}；字距：${style.letterSpacing.value ?? 0}${style.letterSpacing.unit === 'PERCENT' ? '%' : ''}`));
+        if (bindings) card.append(make('p', 'detail', `变量绑定：${bindings}`));
+        return card;
+      }
+      function render() {
+        for (const button of tabs.children) button.setAttribute('aria-selected', String(button.textContent === state.category));
+        const category = categories.find(([name]) => name === state.category);
+        const data = category[1](state.mode);
+        const items = state.category === 'Text Styles'
+          ? Object.entries(data).filter(([key, style]) => `${key} ${style.figmaName} ${style.fontFamily} ${style.fontStyle}`.toLocaleLowerCase().includes(state.query))
+          : flatten(data).filter(({ path, token }) => `${path} ${token.$extensions?.figma?.name ?? ''} ${token.$extensions?.figma?.alias?.name ?? ''}`.toLocaleLowerCase().includes(state.query));
+        resultCount.textContent = `${state.category} · ${items.length} 项${state.category === 'Semantic Color' ? ` · ${state.mode === 'indonesia' ? 'Indonesia' : 'Kenya'}` : ''}`;
+        list.replaceChildren(...items.map(item => state.category === 'Text Styles' ? styleCard(item) : tokenCard(item, state.category)));
+        if (!items.length) list.append(make('div', 'empty', '没有找到匹配的变量。'));
+      }
+      render();
+    })();
+  </script>
+</body>
+</html>
