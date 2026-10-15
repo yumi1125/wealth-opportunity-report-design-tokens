@@ -9,7 +9,7 @@ const snapshot = JSON.parse(await readFile(join(root, 'source', 'figma-snapshot.
 const dataMatch = html.match(/<script id="token-data" type="application\/json">([^<]+)<\/script>/);
 const appMatch = html.match(/<script>\s*(\(\(\) => \{[\s\S]*?\}\)\(\);)\s*<\/script>/);
 if (!dataMatch || !appMatch) throw new Error('Viewer data or script is missing');
-new Script(appMatch[1], { filename: 'viewer/index.html' });
+const app = new Script(appMatch[1], { filename: 'viewer/index.html' });
 const files = JSON.parse(dataMatch[1]);
 const manifest = files['manifest.json'];
 const flatten = group => Object.values(group).flatMap(value =>
@@ -75,4 +75,38 @@ if (![...indonesia, ...kenya].every(token =>
   token.$value.alpha >= 0 && token.$value.alpha <= 1 && token.$value.components.length === 3)) {
   throw new Error('Invalid viewer color values');
 }
+
+// Exercise category and mode switching without requiring a browser or network.
+class Element {
+  constructor() { this.children = []; this.dataset = {}; this.style = {}; this.attributes = {}; this.value = ''; this.text = ''; }
+  set textContent(value) { this.text = String(value); this.children = []; }
+  get textContent() { return this.text || this.children.map(child => child.textContent).join(''); }
+  append(...children) { this.children.push(...children); }
+  replaceChildren(...children) { this.text = ''; this.children = children; }
+  setAttribute(name, value) { this.attributes[name] = value; }
+}
+const ids = ['token-data', 'metrics', 'tabs', 'groups', 'rows', 'head-row', 'table-title', 'mode', 'search'];
+const elements = new Map(ids.map(id => [id, new Element()]));
+elements.get('token-data').textContent = dataMatch[1];
+const document = { getElementById: id => elements.get(id), createElement: () => new Element() };
+app.runInNewContext({ document });
+function checkCategory(name, expectedCount) {
+  const tab = elements.get('tabs').children.find(button => button.dataset.category === name);
+  if (!tab) throw new Error(`Missing category tab: ${name}`);
+  tab.onclick();
+  const actual = elements.get('rows').children.length;
+  if (actual !== expectedCount || !elements.get('table-title').textContent.startsWith(name)) {
+    throw new Error(`Switching to ${name} rendered ${actual} rows; expected ${expectedCount}`);
+  }
+}
+checkCategory('Radius', 5);
+if (elements.get('groups').children.length !== 2) throw new Error('Radius must have only the All group');
+checkCategory('Dimensions', 13);
+checkCategory('Typography', 8);
+checkCategory('Text Styles', 4);
+checkCategory('Semantic Color', 25);
+elements.get('mode').onchange({ target: { value: 'kenya' } });
+if (elements.get('head-row').children.length !== 2) throw new Error('Kenya mode must show one value column');
+elements.get('search').oninput({ target: { value: 'Text/Error' } });
+if (elements.get('rows').children.length !== 1) throw new Error('Search did not narrow to Text/Error');
 console.log(`Viewer checked: ${manifest.variableCount} variables, ${manifest.textStyleCount} text styles, 2 color modes.`);

@@ -64,6 +64,7 @@
       const title = document.getElementById('table-title');
       const make = (tag, cls, content) => { const el=document.createElement(tag); if(cls)el.className=cls; if(content!==undefined)el.textContent=String(content); return el; };
       function flatten(group, parents=[]) {
+        if (!group || typeof group !== 'object') return [];
         return Object.entries(group).flatMap(([key,value]) => value && Object.hasOwn(value,'$value')
           ? [{path:[...parents,key].join('/'),name:key,group:parents[0]??'',token:value}]
           : flatten(value,[...parents,key]));
@@ -103,7 +104,8 @@
       }
       function renderGroups(data) {
         groups.replaceChildren(make('div','groups-title','分组'));
-        const counts=state.category==='Text Styles'?[['all',Object.keys(data).length]]:[['all',flatten(data).length],...Object.entries(data).map(([name,value])=>[name,flatten(value).length])];
+        const folders=Object.entries(data).filter(([,value])=>value && !Object.hasOwn(value,'$value'));
+        const counts=state.category==='Text Styles'?[['all',Object.keys(data).length]]:[['all',flatten(data).length],...folders.map(([name,value])=>[name,flatten(value).length])];
         for(const [name,count] of counts) {
           const button=make('button','group');button.type='button';button.dataset.group=name;
           button.setAttribute('aria-selected',String(name===state.group));
