@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>导出设计变量</title>
+<style>
+  body { font: 13px -apple-system, BlinkMacSystemFont, sans-serif; padding: 16px; color: #202020; }
+  h1 { font-size: 16px; margin: 0 0 10px; }
+  p { line-height: 1.5; margin: 0 0 14px; }
+  button { border: 0; border-radius: 6px; padding: 9px 14px; background: #0d99ff; color: white; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  #status { margin-top: 14px; min-height: 35px; overflow-wrap: anywhere; }
+  .error { color: #c43838; }
+</style>
+<h1>导出设计变量</h1>
+<p>从当前设计系统文件读取本地变量、两国模式、文本样式和别名。此操作不会修改 Figma。</p>
+<button id="export">下载 figma-snapshot.json</button>
+<div id="status" role="status"></div>
+<script>
+  const button = document.getElementById('export');
+  const status = document.getElementById('status');
+  button.onclick = () => {
+    button.disabled = true;
+    status.className = '';
+    status.textContent = '准备导出…';
+    parent.postMessage({ pluginMessage: { type: 'export' } }, '*');
+  };
+  onmessage = event => {
+    const message = event.data.pluginMessage;
+    if (!message) return;
+    if (message.type === 'progress') status.textContent = message.message;
+    if (message.type === 'error') {
+      button.disabled = false;
+      status.className = 'error';
+      status.textContent = message.message;
+    }
+    if (message.type === 'result') {
+      const data = `${JSON.stringify(message.snapshot, null, 2)}\n`;
+      const url = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'figma-snapshot.json';
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 30000);
+      button.disabled = false;
+      status.textContent = `已下载：${message.snapshot.variables.length} 个变量，${message.snapshot.styles.length} 个文本样式。`;
+    }
+  };
+</script>
+</html>

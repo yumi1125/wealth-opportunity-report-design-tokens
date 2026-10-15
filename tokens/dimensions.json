@@ -1,0 +1,175 @@
+{
+  "spacing": {
+    "1px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11042",
+          "name": "Spacing/1px"
+        }
+      }
+    },
+    "2px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11043",
+          "name": "Spacing/2px"
+        }
+      }
+    },
+    "4px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11044",
+          "name": "Spacing/4px"
+        }
+      }
+    },
+    "6px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11045",
+          "name": "Spacing/6px"
+        }
+      }
+    },
+    "8px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11046",
+          "name": "Spacing/8px"
+        }
+      }
+    },
+    "10px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 10,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11047",
+          "name": "Spacing/10px"
+        }
+      }
+    },
+    "12px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11048",
+          "name": "Spacing/12px"
+        }
+      }
+    },
+    "16px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11049",
+          "name": "Spacing/16px"
+        }
+      }
+    },
+    "20px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 20,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11050",
+          "name": "Spacing/20px"
+        }
+      }
+    }
+  },
+  "stroke": {
+    "hairline": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11054",
+          "name": "Stroke/Hairline"
+        }
+      }
+    },
+    "1px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11055",
+          "name": "Stroke/1px"
+        }
+      }
+    },
+    "medium": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11056",
+          "name": "Stroke/Medium"
+        }
+      }
+    },
+    "2px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:11057",
+          "name": "Stroke/2px"
+        }
+      }
+    }
+  }
+}

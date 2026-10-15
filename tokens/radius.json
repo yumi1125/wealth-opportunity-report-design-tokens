@@ -1,0 +1,67 @@
+{
+  "extra-small": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    },
+    "$extensions": {
+      "figma": {
+        "variableId": "VariableID:31:1611",
+        "name": "ExtraSmall"
+      }
+    }
+  },
+  "small": {
+    "$type": "dimension",
+    "$value": {
+      "value": 6,
+      "unit": "px"
+    },
+    "$extensions": {
+      "figma": {
+        "variableId": "VariableID:31:1612",
+        "name": "Small"
+      }
+    }
+  },
+  "medium": {
+    "$type": "dimension",
+    "$value": {
+      "value": 8,
+      "unit": "px"
+    },
+    "$extensions": {
+      "figma": {
+        "variableId": "VariableID:31:1613",
+        "name": "Medium"
+      }
+    }
+  },
+  "large": {
+    "$type": "dimension",
+    "$value": {
+      "value": 12,
+      "unit": "px"
+    },
+    "$extensions": {
+      "figma": {
+        "variableId": "VariableID:31:1615",
+        "name": "Large"
+      }
+    }
+  },
+  "full": {
+    "$type": "dimension",
+    "$value": {
+      "value": 999,
+      "unit": "px"
+    },
+    "$extensions": {
+      "figma": {
+        "variableId": "VariableID:31:1619",
+        "name": "Full"
+      }
+    }
+  }
+}

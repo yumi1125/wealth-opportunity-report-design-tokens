@@ -1,0 +1,23 @@
+{
+  "source": "https://www.figma.com/design/946GZfDFpPwburJkuZy9mA",
+  "variableCount": 51,
+  "collectionCounts": {
+    "Typography": 8,
+    "Dimensions": 13,
+    "Semantic Color": 25,
+    "Radius": 5
+  },
+  "semanticColorModes": [
+    "indonesia",
+    "kenya"
+  ],
+  "textStyleCount": 4,
+  "files": [
+    "typography.json",
+    "dimensions.json",
+    "semantic-color.indonesia.json",
+    "semantic-color.kenya.json",
+    "radius.json",
+    "text-styles.json"
+  ]
+}
