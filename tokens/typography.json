@@ -1,0 +1,103 @@
+{
+  "Family": {
+    "Primary": {
+      "$type": "fontFamily",
+      "$value": "Pingfang SC",
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:10969",
+          "name": "Family/Primary"
+        }
+      }
+    }
+  },
+  "Size": {
+    "Caption": {
+      "$type": "dimension",
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:10971",
+          "name": "Size/Caption"
+        }
+      }
+    },
+    "Body": {
+      "$type": "dimension",
+      "$value": {
+        "value": 14,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:10973",
+          "name": "Size/Body"
+        }
+      }
+    },
+    "Heading2": {
+      "$type": "dimension",
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:10974",
+          "name": "Size/Heading2"
+        }
+      }
+    },
+    "Heading1": {
+      "$type": "dimension",
+      "$value": {
+        "value": 20,
+        "unit": "px"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:10976",
+          "name": "Size/Heading1"
+        }
+      }
+    }
+  },
+  "Weight": {
+    "Regular": {
+      "$type": "fontWeight",
+      "$value": 400,
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:10990",
+          "name": "Weight/Regular",
+          "figmaValue": "Regular"
+        }
+      }
+    },
+    "Medium": {
+      "$type": "fontWeight",
+      "$value": 500,
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:10991",
+          "name": "Weight/Medium",
+          "figmaValue": "Medium"
+        }
+      }
+    },
+    "SemiBold": {
+      "$type": "fontWeight",
+      "$value": 600,
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:28:10992",
+          "name": "Weight/SemiBold",
+          "figmaValue": "Semibold"
+        }
+      }
+    }
+  }
+}

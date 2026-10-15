@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>财富先机报告 · 设计变量</title>
+  <style>
+    :root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#243044;background:#f5f7fa}
+    *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
+    .shell{max-width:1460px;margin:auto;padding:28px 22px 48px}h1{margin:0;font-size:32px}.intro{color:#667589;line-height:1.6}
+    .metrics,.tabs,.toolbar{display:flex;flex-wrap:wrap;gap:9px}.metrics{margin:20px 0}.metric,.toolbar,.browser{border:1px solid #dae3ee;background:white;border-radius:12px}
+    .metric{padding:12px 17px;min-width:135px}.metric b{display:block;font-size:22px}.metric span,.hint{color:#78869a;font-size:12px}
+    .toolbar{padding:13px;align-items:center}.search{flex:1 1 250px}.mode{display:flex;gap:8px;align-items:center;font-size:13px;color:#667589}
+    input,select{min-height:39px;border:1px solid #cbd6e4;border-radius:8px;padding:7px 10px;background:white;color:#243044}input{width:100%}select{min-width:155px}
+    button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8cbaf4;outline-offset:2px}
+    .tabs{margin:17px 0 11px}.tab{border:1px solid #d4dfeb;border-radius:8px;padding:9px 12px;background:white;color:#4b5c72}
+    .tab[aria-selected=true],.group[aria-selected=true]{background:#e7f2ff;color:#1460ba;font-weight:700}
+    .browser{display:grid;grid-template-columns:235px minmax(0,1fr);overflow:hidden;min-height:460px}
+    .groups{padding:15px 9px;border-right:1px solid #e1e8f0;background:#fbfcfe}.groups-title{padding:0 10px 10px;font-size:12px;font-weight:700;color:#69798e}
+    .group{display:flex;justify-content:space-between;width:100%;border:0;border-radius:7px;padding:10px;background:transparent;text-align:left;color:#34465e}.group-count{color:#8592a3}
+    .table-area{min-width:0}.table-title{padding:16px 18px;border-bottom:1px solid #e4eaf1;font-weight:700}.table-scroll{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;table-layout:fixed}th,td{padding:12px 15px;border-bottom:1px solid #e4eaf1;text-align:left;vertical-align:middle}th{background:#fbfcfe;color:#68778b;font-size:12px}th:first-child{width:34%}th+th,td+td{border-left:1px solid #e4eaf1}
+    .name,.value-main{font-size:14px;font-weight:650;overflow-wrap:anywhere}.sub,.value-sub{margin-top:4px;color:#77869a;font-size:11px;overflow-wrap:anywhere}
+    .value-row{display:flex;align-items:center;gap:10px}.swatch{flex:0 0 27px;width:27px;height:27px;border:1px solid #ced9e5;border-radius:5px;background-color:white;background-image:linear-gradient(45deg,#e4e9ee 25%,transparent 25%),linear-gradient(-45deg,#e4e9ee 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e4e9ee 75%),linear-gradient(-45deg,transparent 75%,#e4e9ee 75%);background-size:12px 12px;background-position:0 0,0 6px,6px -6px,-6px 0;overflow:hidden}.swatch-inner{display:block;width:100%;height:100%}
+    .empty{padding:42px;color:#77869a;text-align:center}footer{margin-top:18px;color:#77869a;font-size:12px;line-height:1.6}
+    @media(max-width:760px){.shell{padding:19px 12px}.browser{grid-template-columns:1fr}.groups{display:flex;flex-wrap:wrap;gap:4px;border-right:0;border-bottom:1px solid #e1e8f0}.groups-title{width:100%}.group{width:auto;gap:12px}table{min-width:570px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <h1>财富先机报告 · 设计变量</h1>
+    <p class="intro">按 Figma 的<strong>集合 → 分组 → 变量名</strong>层级展示。此页是只读离线快照；修改请回到 Figma，重新导出后提交审核。</p>
+    <section class="metrics" id="metrics" aria-label="变量数量"></section>
+    <div class="toolbar">
+      <label class="search"><input id="search" type="search" placeholder="搜索 Figma 变量名或别名" aria-label="搜索变量"></label>
+      <label class="mode">颜色模式 <select id="mode"><option value="both">对比两国</option><option value="indonesia">Indonesia</option><option value="kenya">Kenya</option></select></label>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="变量集合"></nav>
+    <section class="browser" aria-label="变量浏览器">
+      <aside class="groups" id="groups" aria-label="变量分组"></aside>
+      <div class="table-area"><div class="table-title" id="table-title"></div><div class="table-scroll"><table><thead><tr id="head-row"></tr></thead><tbody id="rows"></tbody></table></div></div>
+    </section>
+    <footer>显示名称与层级取自 Figma 变量路径。颜色别名显示目标名，并附已解析的 Hex 与透明度；开发 JSON 保留同样的路径层级。</footer>
+  </main>
+  <!-- EMBEDDED_TOKEN_DATA -->
+  <script>
+    (() => {
+      const files = JSON.parse(document.getElementById('token-data').textContent);
+      const manifest = files['manifest.json'];
+      const categories = [
+        ['Semantic Color', () => files['semantic-color.indonesia.json']],
+        ['Radius', () => files['radius.json']],
+        ['Dimensions', () => files['dimensions.json']],
+        ['Typography', () => files['typography.json']],
+        ['Text Styles', () => files['text-styles.json'].styles]
+      ];
+      const labels = { Radius:'圆角', Dimensions:'大小', Typography:'字体排印', Background:'背景', Text:'文本', Border:'边框', Overlay:'叠加' };
+      const state = { category:'Semantic Color', group:'Text', mode:'both', query:'' };
+      const metrics = document.getElementById('metrics');
+      const tabs = document.getElementById('tabs');
+      const groups = document.getElementById('groups');
+      const rows = document.getElementById('rows');
+      const head = document.getElementById('head-row');
+      const title = document.getElementById('table-title');
+      const make = (tag, cls, content) => { const el=document.createElement(tag); if(cls)el.className=cls; if(content!==undefined)el.textContent=String(content); return el; };
+      function flatten(group, parents=[]) {
+        if (!group || typeof group !== 'object') return [];
+        return Object.entries(group).flatMap(([key,value]) => value && Object.hasOwn(value,'$value')
+          ? [{path:[...parents,key].join('/'),name:key,group:parents[0]??'',token:value}]
+          : flatten(value,[...parents,key]));
+      }
+      function metric(count,label) { const el=make('div','metric'); el.append(make('b','',count),make('span','',label)); metrics.append(el); }
+      metric(manifest.variableCount,'变量总数');
+      metric(manifest.collectionCounts['Semantic Color'],'语义颜色');
+      metric(manifest.semanticColorModes.length,'国家模式');
+      metric(manifest.textStyleCount,'文本样式');
+      for(const [name] of categories) {
+        const button=make('button','tab',`${name}${labels[name]?` · ${labels[name]}`:''}`);
+        button.type='button';button.dataset.category=name;
+        button.onclick=()=>{state.category=name;state.group='all';state.query='';document.getElementById('search').value='';render();};
+        tabs.append(button);
+      }
+      document.getElementById('mode').onchange=event=>{state.mode=event.target.value;render();};
+      document.getElementById('search').oninput=event=>{state.query=event.target.value.trim().toLocaleLowerCase();if(state.query)state.group='all';render();};
+      function colorCell(token) {
+        const value=token.$value, figma=token.$extensions?.figma, td=make('td'), row=make('div','value-row');
+        const swatch=make('span','swatch'), inner=make('span','swatch-inner');
+        inner.style.backgroundColor=`rgba(${value.components.map(x=>Math.round(x*255)).join(',')},${value.alpha})`;
+        swatch.append(inner);
+        const info=make('div');
+        info.append(make('div','value-main',figma?.alias?.name??value.hex),make('div','value-sub',`${value.hex} · ${Math.round(value.alpha*10000)/100}%`));
+        row.append(swatch,info);td.append(row);return td;
+      }
+      function plainCell(token) {
+        const td=make('td'), value=token.$value;
+        const label=token.$type==='dimension'?`${value.value} ${value.unit}`:token.$type==='fontWeight'?`${value} · ${token.$extensions?.figma?.figmaValue??''}`:value;
+        td.append(make('div','value-main',label));return td;
+      }
+      function styleCell(style) {
+        const td=make('td');
+        td.append(make('div','value-main',`${style.fontFamily} · ${style.fontStyle} · ${style.fontSize.value}${style.fontSize.unit}`));
+        const bindings=Object.entries(style.variableBindings??{}).map(([field,v])=>`${field}: ${v.name}`).join('；');
+        td.append(make('div','value-sub',`行高 ${style.lineHeight.unit} · ${bindings}`));return td;
+      }
+      function renderGroups(data) {
+        groups.replaceChildren(make('div','groups-title','分组'));
+        const folders=Object.entries(data).filter(([,value])=>value && !Object.hasOwn(value,'$value'));
+        const counts=state.category==='Text Styles'?[['all',Object.keys(data).length]]:[['all',flatten(data).length],...folders.map(([name,value])=>[name,flatten(value).length])];
+        for(const [name,count] of counts) {
+          const button=make('button','group');button.type='button';button.dataset.group=name;
+          button.setAttribute('aria-selected',String(name===state.group));
+          button.append(make('span','',name==='all'?'全部':`${name}${labels[name]?` · ${labels[name]}`:''}`),make('span','group-count',count));
+          button.onclick=()=>{state.group=name;render();};groups.append(button);
+        }
+      }
+      function render() {
+        for(const button of tabs.children)button.setAttribute('aria-selected',String(button.dataset.category===state.category));
+        const data=categories.find(([name])=>name===state.category)[1]();renderGroups(data);
+        const color=state.category==='Semantic Color', modes=color?(state.mode==='both'?['indonesia','kenya']:[state.mode]):[];
+        head.replaceChildren(make('th','','Name'));
+        if(color)for(const mode of modes)head.append(make('th','',mode==='indonesia'?'印尼 · Indonesia':'肯尼亚 · Kenya'));
+        else head.append(make('th','','Value'));
+        const entries=state.category==='Text Styles'?Object.entries(data).map(([key,style])=>({path:style.figmaName,name:style.figmaName,style,key})):flatten(data);
+        const visible=entries.filter(entry=>(state.group==='all'||entry.group===state.group)&&`${entry.path} ${entry.token?.$extensions?.figma?.alias?.name??''}`.toLocaleLowerCase().includes(state.query));
+        title.textContent=`${state.category}${state.group==='all'?'':` / ${state.group}`} · ${visible.length} 项`;
+        rows.replaceChildren();
+        const modeEntries=Object.fromEntries(modes.map(mode=>[mode,new Map(flatten(files[`semantic-color.${mode}.json`]).map(item=>[item.path,item.token]))]));
+        for(const entry of visible) {
+          const tr=make('tr'), name=make('td');
+          name.append(make('div','name',entry.name));
+          if(entry.path!==entry.name)name.append(make('div','sub',entry.path));
+          if(entry.key)name.append(make('div','sub',`交付标识：${entry.key}`));
+          tr.append(name);
+          if(color)for(const mode of modes)tr.append(colorCell(modeEntries[mode].get(entry.path)));
+          else tr.append(state.category==='Text Styles'?styleCell(entry.style):plainCell(entry.token));
+          rows.append(tr);
+        }
+        if(!visible.length){const tr=make('tr'),td=make('td','empty','没有找到匹配的变量。');td.colSpan=color?modes.length+1:2;tr.append(td);rows.append(tr);}
+      }
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+{
+  "sourceFileKey": "946GZfDFpPwburJkuZy9mA",
+  "styles": {
+    "heading1": {
+      "figmaName": "一级标题",
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Semibold",
+      "fontSize": {
+        "value": 20,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "unit": "AUTO"
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "variableBindings": {
+        "fontSize": {
+          "collection": "Typography",
+          "name": "Size/Heading1"
+        },
+        "fontStyle": {
+          "collection": "Typography",
+          "name": "Weight/SemiBold"
+        }
+      }
+    },
+    "heading2": {
+      "figmaName": "二级标题",
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Semibold",
+      "fontSize": {
+        "value": 16,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "unit": "AUTO"
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "variableBindings": {
+        "fontSize": {
+          "collection": "Typography",
+          "name": "Size/Heading2"
+        },
+        "fontStyle": {
+          "collection": "Typography",
+          "name": "Weight/SemiBold"
+        }
+      }
+    },
+    "body": {
+      "figmaName": "正文",
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Regular",
+      "fontSize": {
+        "value": 14,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "unit": "AUTO"
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "variableBindings": {
+        "fontSize": {
+          "collection": "Typography",
+          "name": "Size/Body"
+        },
+        "fontStyle": {
+          "collection": "Typography",
+          "name": "Weight/Regular"
+        }
+      }
+    },
+    "caption": {
+      "figmaName": "辅助文字",
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Regular",
+      "fontSize": {
+        "value": 12,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "unit": "AUTO"
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "variableBindings": {
+        "fontSize": {
+          "collection": "Typography",
+          "name": "Size/Caption"
+        },
+        "fontStyle": {
+          "collection": "Typography",
+          "name": "Weight/Regular"
+        }
+      }
+    }
+  }
+}
