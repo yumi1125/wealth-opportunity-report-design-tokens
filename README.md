@@ -2,7 +2,7 @@
 
 ## 快速入口
 
-- **浏览变量**：[打开浏览页文件](https://github.com/yumi1125/wealth-opportunity-report-design-tokens/blob/main/viewer/index.html)。此仓库为私有；登录并获得权限后，下载该 HTML 文件，在浏览器中打开即可交互查看。GitHub 的文件预览显示源码，不是已部署的网站。
+- **在线浏览变量**：[打开受登录保护的变量浏览页](https://wealth-opportunity-report-design-to-xi.vercel.app/)。使用已获此 Vercel 项目访问权限的账号登录后，可直接在浏览器中查看；无需下载 HTML。若尚无权限，请联系项目管理员添加为 Vercel 项目成员。
 - **开发下载**：[下载当前正式版 ZIP](https://github.com/yumi1125/wealth-opportunity-report-design-tokens/archive/refs/heads/main.zip) · [查看 `tokens/` JSON](https://github.com/yumi1125/wealth-opportunity-report-design-tokens/tree/main/tokens) · [复制仓库地址](https://github.com/yumi1125/wealth-opportunity-report-design-tokens)。ZIP 包含变量 JSON、文本样式、浏览页及导出工具；接入 App 请使用 `tokens/` 下的 JSON。
 
 本仓库交付移动端设计变量。**Figma 是设计值的唯一编辑入口；GitHub `main` 分支上的 JSON 是开发接入的已审核版本。** 当前先交付平台无关的 JSON，不生成 Flutter、iOS、Android 或 React Native 代码。仓库为私有，需先获得仓库访问权限。
@@ -24,14 +24,14 @@
 | `tokens/semantic-color.kenya.json` | Kenya 语义颜色 |
 | `tokens/text-styles.json` | 四个文本样式及其变量绑定 |
 | `tokens/manifest.json` | 数量及交付文件清单 |
-| `viewer/index.html` | 可离线打开的只读变量浏览界面 |
+| `viewer/index.html` | 可离线打开的只读变量浏览界面；同一内容也部署为上述在线浏览页 |
 
 `source/figma-snapshot.json` 是从 [Figma 设计系统](https://www.figma.com/design/946GZfDFpPwburJkuZy9mA) 读取的原始快照，供复核和重新生成。每个 token 的 `$extensions.figma` 保留 Figma ID 和原名；别名还保留目标 ID/名称，同时给开发提供已解析的颜色值。导出不会改动 Figma 变量。
 
 ## 下载与查看
 
-1. 先由仓库管理员将设计师或开发加入[私有仓库](https://github.com/yumi1125/wealth-opportunity-report-design-tokens)；登录有权限的 GitHub 账号。
-2. **下载整个交付包**：点击上方“下载当前正式版 ZIP”，或在仓库 `main` 分支点击绿色 **Code → Download ZIP**。解压后双击 `viewer/index.html`。页面已内嵌变量数据，无需启动服务器，也不需要联网。
+1. **在线查看**：打开上方的[变量浏览页](https://wealth-opportunity-report-design-to-xi.vercel.app/)，登录已获此 Vercel 项目访问权限的账号。Vercel Authentication 对生产和预览部署均要求登录；GitHub 仓库权限与 Vercel 项目权限需分别授予。
+2. **下载整个交付包**：先取得[私有仓库](https://github.com/yumi1125/wealth-opportunity-report-design-tokens)访问权限。点击上方“下载当前正式版 ZIP”，或在仓库 `main` 分支点击绿色 **Code → Download ZIP**。解压后双击 `viewer/index.html` 也可离线查看；页面已内嵌变量数据，无需启动服务器。
 3. **用 Git 更新**：运行 `git clone https://github.com/yumi1125/wealth-opportunity-report-design-tokens.git`，以后在本地仓库运行 `git pull`。克隆后打开 `viewer/index.html`；需要原始数据时读取 `tokens/` 下的 JSON。
 4. **只下载某份 JSON**：在 GitHub 仓库打开 `tokens/` 中目标文件，点击 **Download raw file**（下载原始文件）。若 GitHub 界面只显示 **Raw**，打开后使用浏览器“另存为”，并保留 `.json` 扩展名。
 
@@ -41,9 +41,9 @@
 
 1. 设计师在 Figma 修改变量与文本样式，检查 Indonesia、Kenya 代表页面。
 2. 首次使用时，在 Figma 桌面版选择 **插件 → 开发 → 从清单导入插件**，选取仓库里的 `figma-export/manifest.json`。打开指定设计系统文件，运行 **Mobile tokens snapshot export**，下载 `figma-snapshot.json`，替换仓库的 `source/figma-snapshot.json`。以后无需重复导入插件。普通开发插件读不到文件 key，插件以现有 Typography 集合 ID 校验文件，避免在其他文件误导出。插件只读，不上传数据。
-3. 运行 `npm run build:tokens` 重新生成 `tokens/` JSON 和 `viewer/index.html`，再运行 `npm run check:tokens` 校验两者与快照一致。需要 Node.js 20 或更新版本，无需安装依赖。
+3. 运行 `npm run build:tokens` 重新生成 `tokens/` JSON 和 `viewer/index.html`，再运行 `npm run check:tokens` 校验两者与快照一致。`npm run build:site` 会校验数据并生成 Vercel 部署用的 `dist/index.html`。需要 Node.js 20 或更新版本，无需安装依赖。
 4. 按 [变量交付规则](docs/token-rules.md) 检查变化，在 [变更记录](CHANGELOG.md) 写明新增、修改、删除和受影响页面/组件。
-5. 提交 GitHub Pull Request；开发检查 JSON 差异、两国模式及别名。合并后接入 App。后续迭代重复此流程。
+5. 提交 GitHub Pull Request；开发检查 JSON 差异、两国模式及别名。合并到 `main` 后，Vercel 从该分支自动构建在线浏览页，开发接入 `tokens/` JSON。后续迭代重复此流程。
 
 若导出出现新集合、新模式或新文本样式，生成器会报错；先确认交付规则，再更新映射，避免静默漏导。若 Figma 字体不可用，保留实际字体名称并在开发接入前明确替代方案，不在导出时悄悄替换。
 
