@@ -2,7 +2,7 @@
 
 ## 快速入口
 
-- **在线浏览变量**：[打开受登录保护的变量浏览页](https://wealth-opportunity-report-design-to-xi.vercel.app/)。使用已获此 Vercel 工作区访问权限的账号登录后，可直接在浏览器中查看；无需下载 HTML。当前 Hobby 工作区只有所有者账号；邀请其他团队成员需要先开通 Vercel 支持团队成员的方案。
+- **在线浏览变量**：[直接打开公开变量浏览页](https://wealth-opportunity-report-design-to-xi.vercel.app/)。无需登录或下载，即可查看当前交付的变量和文本样式。
 - **开发下载**：[下载当前正式版 ZIP](https://github.com/yumi1125/wealth-opportunity-report-design-tokens/archive/refs/heads/main.zip) · [查看 `tokens/` JSON](https://github.com/yumi1125/wealth-opportunity-report-design-tokens/tree/main/tokens) · [复制仓库地址](https://github.com/yumi1125/wealth-opportunity-report-design-tokens)。ZIP 包含变量 JSON、文本样式、浏览页及导出工具；接入 App 请使用 `tokens/` 下的 JSON。
 
 本仓库交付移动端设计变量。**Figma 是设计值的唯一编辑入口；GitHub `main` 分支上的 JSON 是开发接入的已审核版本。** 当前先交付平台无关的 JSON，不生成 Flutter、iOS、Android 或 React Native 代码。仓库公开可读；修改仍通过 Pull Request 审核。
@@ -30,7 +30,7 @@
 
 ## 下载与查看
 
-1. **在线查看**：打开上方的[变量浏览页](https://wealth-opportunity-report-design-to-xi.vercel.app/)，登录已获此 Vercel 工作区访问权限的账号。Vercel Authentication 对生产和预览部署均要求登录；GitHub 仓库权限与 Vercel 访问权限需分别授予。当前只有工作区所有者可直接登录查看；团队成员获邀前可使用下面的离线方式。
+1. **在线查看**：直接打开上方的[变量浏览页](https://wealth-opportunity-report-design-to-xi.vercel.app/)，无需账号。浏览页和 GitHub 仓库均公开可读；请勿将未准备公开的设计数据加入仓库或浏览页。
 2. **下载整个交付包**：无需登录即可点击上方“下载当前正式版 ZIP”，或在[公开仓库](https://github.com/yumi1125/wealth-opportunity-report-design-tokens)的 `main` 分支点击绿色 **Code → Download ZIP**。解压后双击 `viewer/index.html` 也可离线查看；页面已内嵌变量数据，无需启动服务器。
 3. **用 Git 更新**：运行 `git clone https://github.com/yumi1125/wealth-opportunity-report-design-tokens.git`，以后在本地仓库运行 `git pull`。克隆后打开 `viewer/index.html`；需要原始数据时读取 `tokens/` 下的 JSON。
 4. **只下载某份 JSON**：在 GitHub 仓库打开 `tokens/` 中目标文件，点击 **Download raw file**（下载原始文件）。若 GitHub 界面只显示 **Raw**，打开后使用浏览器“另存为”，并保留 `.json` 扩展名。
