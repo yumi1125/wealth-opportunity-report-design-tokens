@@ -7,7 +7,7 @@ const snapshotPath = join(root, 'source', 'figma-snapshot.json');
 const outputDir = join(root, 'tokens');
 const viewerTemplatePath = join(root, 'viewer', 'template.html');
 const viewerPath = join(root, 'viewer', 'index.html');
-const modeNames = new Map([['印尼', 'indonesia'], ['Indonesia', 'indonesia'], ['肯尼亚', 'kenya'], ['Kenya', 'kenya']]);
+const modeNames = new Map([['印尼', 'indonesia'], ['Indonesia', 'indonesia'], ['尼日利亚', 'nigeria'], ['Nigeria', 'nigeria'], ['肯尼亚', 'kenya'], ['Kenya', 'kenya']]);
 const styleNames = new Map([['一级标题', 'heading1'], ['二级标题', 'heading2'], ['正文', 'body'], ['辅助文字', 'caption']]);
 const fontWeights = new Map([['Regular', 400], ['Medium', 500], ['Semibold', 600], ['SemiBold', 600], ['Semi Bold', 600]]);
 const fileNames = new Map([
@@ -15,6 +15,7 @@ const fileNames = new Map([
   ['Dimensions', 'dimensions.json'],
   ['Radius', 'radius.json'],
   ['Semantic Color:indonesia', 'semantic-color.indonesia.json'],
+  ['Semantic Color:nigeria', 'semantic-color.nigeria.json'],
   ['Semantic Color:kenya', 'semantic-color.kenya.json']
 ]);
 
@@ -117,11 +118,11 @@ function build(snapshot) {
     }
   }
   if (listed.size !== snapshot.variables.length) fail('Some variables are not in a collection');
-  if (files.size !== 5) fail(`Expected five token files; found ${files.size}`);
+  if (files.size !== 6) fail(`Expected six token files; found ${files.size}`);
   files.set('text-styles.json', textStylesOutput(snapshot, snapshot.variables));
   files.set('manifest.json', { source: `https://www.figma.com/design/${snapshot.fileKey}`, variableCount: snapshot.variables.length,
     collectionCounts: Object.fromEntries(snapshot.collections.map(c => [c.name, c.variableIds.length])),
-    semanticColorModes: ['indonesia', 'kenya'], textStyleCount: snapshot.styles.length,
+    semanticColorModes: ['indonesia', 'nigeria', 'kenya'], textStyleCount: snapshot.styles.length,
     files: [...files.keys()] });
   return files;
 }

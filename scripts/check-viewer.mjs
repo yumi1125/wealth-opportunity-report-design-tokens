@@ -47,7 +47,8 @@ for (const collection of snapshot.collections) {
     throw new Error(`Viewer names differ from Figma: ${collection.name}`);
   }
   if (collection.name === 'Semantic Color') {
-    const kenya = files['semantic-color.kenya.json'];
+    for (const mode of manifest.semanticColorModes) {
+    const kenya = files[`semantic-color.${mode}.json`];
     for (const id of collection.variableIds) {
       const variable = snapshot.variables.find(item => item.id === id);
       const token = variable.name.split('/').reduce((group, segment) => group?.[segment], kenya);
@@ -55,7 +56,7 @@ for (const collection of snapshot.collections) {
         throw new Error(`Kenya viewer path differs from Figma: ${variable.name}`);
       }
     }
-  }
+  }}
 }
 for (const [name, count] of Object.entries(counts)) {
   if (count !== manifest.collectionCounts[name]) throw new Error(`Wrong viewer count for ${name}`);
@@ -67,8 +68,8 @@ if (Object.keys(files['text-styles.json'].styles).length !== manifest.textStyleC
   throw new Error('Wrong viewer text style count');
 }
 const indonesia = flatten(files['semantic-color.indonesia.json']);
-const kenya = flatten(files['semantic-color.kenya.json']);
-if (indonesia.length !== kenya.length || !kenya.every(token => token.$type === 'color')) {
+const kenya = manifest.semanticColorModes.flatMap(mode => flatten(files[`semantic-color.${mode}.json`]));
+if (indonesia.length * manifest.semanticColorModes.length !== kenya.length || !kenya.every(token => token.$type === 'color')) {
   throw new Error('Semantic modes do not align');
 }
 if (![...indonesia, ...kenya].every(token =>
@@ -102,11 +103,16 @@ function checkCategory(name, expectedCount) {
 checkCategory('Radius', 5);
 if (elements.get('groups').children.length !== 2) throw new Error('Radius must have only the All group');
 checkCategory('Dimensions', 13);
-checkCategory('Typography', 8);
+checkCategory('Typography', 9);
 checkCategory('Text Styles', 4);
-checkCategory('Semantic Color', 25);
-elements.get('mode').onchange({ target: { value: 'kenya' } });
-if (elements.get('head-row').children.length !== 2) throw new Error('Kenya mode must show one value column');
+checkCategory('Semantic Color', 26);
+for (const mode of manifest.semanticColorModes) {
+  elements.get('mode').onchange({ target: { value: mode } });
+  if (elements.get('head-row').children.length !== 2) throw new Error(`${mode} must show one value column`);
+  if (elements.get('rows').children.length !== counts['Semantic Color']) throw new Error(`Missing rows in ${mode}`);
+}
+elements.get('mode').onchange({ target: { value: 'both' } });
+if (elements.get('head-row').children.length !== manifest.semanticColorModes.length + 1) throw new Error('Comparison must show all country modes');
 elements.get('search').oninput({ target: { value: 'Text/Error' } });
 if (elements.get('rows').children.length !== 1) throw new Error('Search did not narrow to Text/Error');
-console.log(`Viewer checked: ${manifest.variableCount} variables, ${manifest.textStyleCount} text styles, 2 color modes.`);
+console.log(`Viewer checked: ${manifest.variableCount} variables, ${manifest.textStyleCount} text styles, 3 color modes.`);
