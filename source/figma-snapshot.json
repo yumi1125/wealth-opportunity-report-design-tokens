@@ -19,7 +19,8 @@
         "VariableID:28:10976",
         "VariableID:28:10990",
         "VariableID:28:10991",
-        "VariableID:28:10992"
+        "VariableID:28:10992",
+        "VariableID:150:3258"
       ]
     },
     {
@@ -57,8 +58,12 @@
           "modeId": "30:0"
         },
         {
-          "name": "肯尼亚",
+          "name": "尼日利亚",
           "modeId": "67:1"
+        },
+        {
+          "name": "肯尼亚",
+          "modeId": "221:0"
         }
       ],
       "defaultModeId": "30:0",
@@ -80,6 +85,7 @@
         "VariableID:47:1635",
         "VariableID:45:1134",
         "VariableID:47:1634",
+        "VariableID:86:2615",
         "VariableID:45:1160",
         "VariableID:67:7835",
         "VariableID:48:1710",
@@ -130,7 +136,7 @@
       "type": "FLOAT",
       "collectionId": "VariableCollectionId:28:10966",
       "valuesByMode": {
-        "28:7": 12
+        "28:7": 14
       },
       "description": "",
       "scopes": [
@@ -144,7 +150,7 @@
       "type": "FLOAT",
       "collectionId": "VariableCollectionId:28:10966",
       "valuesByMode": {
-        "28:7": 14
+        "28:7": 15
       },
       "description": "",
       "scopes": [
@@ -158,7 +164,7 @@
       "type": "FLOAT",
       "collectionId": "VariableCollectionId:28:10966",
       "valuesByMode": {
-        "28:7": 16
+        "28:7": 18
       },
       "description": "",
       "scopes": [
@@ -491,6 +497,12 @@
           "g": 1,
           "b": 1,
           "a": 1
+        },
+        "221:0": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
         }
       },
       "description": "",
@@ -512,6 +524,12 @@
           "a": 0.699999988079071
         },
         "67:1": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 0.699999988079071
+        },
+        "221:0": {
           "r": 1,
           "g": 1,
           "b": 1,
@@ -541,6 +559,12 @@
           "g": 0,
           "b": 0,
           "a": 0.8745098114013672
+        },
+        "221:0": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0.8745098114013672
         }
       },
       "description": "",
@@ -562,6 +586,12 @@
           "a": 1
         },
         "67:1": {
+          "r": 0.8078431487083435,
+          "g": 0.1725490242242813,
+          "b": 0.1921568661928177,
+          "a": 1
+        },
+        "221:0": {
           "r": 0.8078431487083435,
           "g": 0.1725490242242813,
           "b": 0.1921568661928177,
@@ -591,6 +621,12 @@
           "g": 0.9215686321258545,
           "b": 0.9254902005195618,
           "a": 1
+        },
+        "221:0": {
+          "r": 0.9960784316062927,
+          "g": 0.9215686321258545,
+          "b": 0.9254902005195618,
+          "a": 1
         }
       },
       "description": "",
@@ -610,6 +646,10 @@
           "id": "VariableID:ea041a0c826ae4b2339dff753b9bbbd9496371cb/1253:4335"
         },
         "67:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:ea041a0c826ae4b2339dff753b9bbbd9496371cb/1253:4335"
+        },
+        "221:0": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:ea041a0c826ae4b2339dff753b9bbbd9496371cb/1253:4335"
         }
@@ -637,6 +677,12 @@
           "g": 0.9098039269447327,
           "b": 0.9960784316062927,
           "a": 1
+        },
+        "221:0": {
+          "r": 0.8549019694328308,
+          "g": 0.9490196108818054,
+          "b": 0.9098039269447327,
+          "a": 1
         }
       },
       "description": "",
@@ -656,6 +702,10 @@
           "id": "VariableID:c3f96b192ce6f8c9a5ae73efff4cec86b7275fd9/1253:4331"
         },
         "67:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:c3f96b192ce6f8c9a5ae73efff4cec86b7275fd9/1253:4331"
+        },
+        "221:0": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:c3f96b192ce6f8c9a5ae73efff4cec86b7275fd9/1253:4331"
         }
@@ -679,6 +729,10 @@
         "67:1": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:1ceead7a658a44c0b47480a8a13f42e7721e2e72/1253:4347"
+        },
+        "221:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1ceead7a658a44c0b47480a8a13f42e7721e2e72/1253:4347"
         }
       },
       "description": "",
@@ -698,6 +752,10 @@
           "id": "VariableID:84c6f57fa30992dac8adc0d2b39152b676868248/1253:4353"
         },
         "67:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:84c6f57fa30992dac8adc0d2b39152b676868248/1253:4353"
+        },
+        "221:0": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:84c6f57fa30992dac8adc0d2b39152b676868248/1253:4353"
         }
@@ -721,6 +779,10 @@
         "67:1": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:4e76eba9cfb81a5f3ae349bda075551ca5695d31/1253:4345"
+        },
+        "221:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:4e76eba9cfb81a5f3ae349bda075551ca5695d31/1253:4345"
         }
       },
       "description": "",
@@ -740,6 +802,10 @@
           "id": "VariableID:e81b405ba36fb99d6a8176422618bfcc3fb7dc9a/1253:4350"
         },
         "67:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:e81b405ba36fb99d6a8176422618bfcc3fb7dc9a/1253:4350"
+        },
+        "221:0": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:e81b405ba36fb99d6a8176422618bfcc3fb7dc9a/1253:4350"
         }
@@ -767,6 +833,12 @@
           "g": 0,
           "b": 0,
           "a": 0.6078431606292725
+        },
+        "221:0": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0.6078431606292725
         }
       },
       "description": "",
@@ -786,6 +858,10 @@
           "id": "VariableID:8c71009049162c0bdff731c86439654a139adb2a/1253:4338"
         },
         "67:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:8c71009049162c0bdff731c86439654a139adb2a/1253:4338"
+        },
+        "221:0": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:8c71009049162c0bdff731c86439654a139adb2a/1253:4338"
         }
@@ -813,6 +889,12 @@
           "g": 0.21176470816135406,
           "b": 0.45490196347236633,
           "a": 1
+        },
+        "221:0": {
+          "r": 0.125490203499794,
+          "g": 0.3607843220233917,
+          "b": 0.26274511218070984,
+          "a": 1
         }
       },
       "description": "",
@@ -834,9 +916,15 @@
           "a": 1
         },
         "67:1": {
-          "r": 0.5803921818733215,
-          "g": 0.8078431487083435,
-          "b": 0.6039215922355652,
+          "r": 0.6470588445663452,
+          "g": 0.7568627595901489,
+          "b": 0.9686274528503418,
+          "a": 1
+        },
+        "221:0": {
+          "r": 0.18431372940540314,
+          "g": 0.47843137383461,
+          "b": 0.35686275362968445,
           "a": 1
         }
       },
@@ -859,6 +947,12 @@
           "a": 1
         },
         "67:1": {
+          "r": 0.886274516582489,
+          "g": 0.6392157077789307,
+          "b": 0.21176470816135406,
+          "a": 1
+        },
+        "221:0": {
           "r": 0.886274516582489,
           "g": 0.6392157077789307,
           "b": 0.21176470816135406,
@@ -888,6 +982,12 @@
           "g": 0.125490203499794,
           "b": 0.125490203499794,
           "a": 1
+        },
+        "221:0": {
+          "r": 0.125490203499794,
+          "g": 0.125490203499794,
+          "b": 0.125490203499794,
+          "a": 1
         }
       },
       "description": "",
@@ -907,6 +1007,10 @@
           "id": "VariableID:1ceead7a658a44c0b47480a8a13f42e7721e2e72/1253:4347"
         },
         "67:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1ceead7a658a44c0b47480a8a13f42e7721e2e72/1253:4347"
+        },
+        "221:0": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:1ceead7a658a44c0b47480a8a13f42e7721e2e72/1253:4347"
         }
@@ -930,6 +1034,12 @@
           "a": 1
         },
         "67:1": {
+          "r": 0.44777268171310425,
+          "g": 0.44777268171310425,
+          "b": 0.44777268171310425,
+          "a": 1
+        },
+        "221:0": {
           "r": 0.44777268171310425,
           "g": 0.44777268171310425,
           "b": 0.44777268171310425,
@@ -959,6 +1069,12 @@
           "g": 1,
           "b": 1,
           "a": 1
+        },
+        "221:0": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
         }
       },
       "description": "",
@@ -980,6 +1096,12 @@
           "a": 1
         },
         "67:1": {
+          "r": 0.125490203499794,
+          "g": 0.125490203499794,
+          "b": 0.125490203499794,
+          "a": 1
+        },
+        "221:0": {
           "r": 0.125490203499794,
           "g": 0.125490203499794,
           "b": 0.125490203499794,
@@ -1009,6 +1131,12 @@
           "g": 0.7647058963775635,
           "b": 0.7647058963775635,
           "a": 1
+        },
+        "221:0": {
+          "r": 0.7647058963775635,
+          "g": 0.7647058963775635,
+          "b": 0.7647058963775635,
+          "a": 1
         }
       },
       "description": "",
@@ -1033,6 +1161,12 @@
           "r": 0.8901960849761963,
           "g": 0.929411768913269,
           "b": 1,
+          "a": 1
+        },
+        "221:0": {
+          "r": 0.8901960849761963,
+          "g": 0.929411768913269,
+          "b": 0.9137254953384399,
           "a": 1
         }
       },
@@ -1059,11 +1193,65 @@
           "g": 0.9098039269447327,
           "b": 0.9960784316062927,
           "a": 1
+        },
+        "221:0": {
+          "r": 0.8549019694328308,
+          "g": 0.9490196108818054,
+          "b": 0.9098039269447327,
+          "a": 1
         }
       },
       "description": "",
       "scopes": [
         "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:86:2615",
+      "name": "Text/successful",
+      "type": "COLOR",
+      "collectionId": "VariableCollectionId:30:940",
+      "valuesByMode": {
+        "30:0": {
+          "r": 0.03921568766236305,
+          "g": 0.572549045085907,
+          "b": 0,
+          "a": 1
+        },
+        "67:1": {
+          "r": 0.03921568766236305,
+          "g": 0.572549045085907,
+          "b": 0,
+          "a": 1
+        },
+        "221:0": {
+          "r": 0.03921568766236305,
+          "g": 0.572549045085907,
+          "b": 0,
+          "a": 1
+        }
+      },
+      "description": "",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:150:3258",
+      "name": "Family/Primary sc",
+      "type": "STRING",
+      "collectionId": "VariableCollectionId:28:10966",
+      "valuesByMode": {
+        "28:7": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:28:10969"
+        }
+      },
+      "description": "",
+      "scopes": [
+        "FONT_FAMILY"
       ],
       "codeSyntax": {}
     }
@@ -1104,7 +1292,7 @@
         "family": "PingFang SC",
         "style": "Semibold"
       },
-      "fontSize": 16,
+      "fontSize": 18,
       "lineHeight": {
         "unit": "AUTO"
       },
@@ -1132,7 +1320,7 @@
         "family": "PingFang SC",
         "style": "Regular"
       },
-      "fontSize": 14,
+      "fontSize": 15,
       "lineHeight": {
         "unit": "AUTO"
       },
@@ -1160,7 +1348,7 @@
         "family": "PingFang SC",
         "style": "Regular"
       },
-      "fontSize": 12,
+      "fontSize": 14,
       "lineHeight": {
         "unit": "AUTO"
       },
@@ -1183,34 +1371,6 @@
     }
   ],
   "externalAliases": {
-    "VariableID:ea041a0c826ae4b2339dff753b9bbbd9496371cb/1253:4335": {
-      "id": "VariableID:ea041a0c826ae4b2339dff753b9bbbd9496371cb/1253:4335",
-      "name": "Colors/Gray/12",
-      "collectionId": "VariableCollectionId:c00b1898aa4238933bf90edf9d0a50c3bb2dc673/1253:4329",
-      "type": "COLOR",
-      "valuesByMode": {
-        "761:1": {
-          "r": 0.125490203499794,
-          "g": 0.125490203499794,
-          "b": 0.125490203499794,
-          "a": 1
-        }
-      }
-    },
-    "VariableID:c3f96b192ce6f8c9a5ae73efff4cec86b7275fd9/1253:4331": {
-      "id": "VariableID:c3f96b192ce6f8c9a5ae73efff4cec86b7275fd9/1253:4331",
-      "name": "Colors/Gray/10",
-      "collectionId": "VariableCollectionId:c00b1898aa4238933bf90edf9d0a50c3bb2dc673/1253:4329",
-      "type": "COLOR",
-      "valuesByMode": {
-        "761:1": {
-          "r": 0.5137255191802979,
-          "g": 0.5137255191802979,
-          "b": 0.5137255191802979,
-          "a": 1
-        }
-      }
-    },
     "VariableID:1ceead7a658a44c0b47480a8a13f42e7721e2e72/1253:4347": {
       "id": "VariableID:1ceead7a658a44c0b47480a8a13f42e7721e2e72/1253:4347",
       "name": "Colors/Gray/8",
@@ -1225,30 +1385,16 @@
         }
       }
     },
-    "VariableID:84c6f57fa30992dac8adc0d2b39152b676868248/1253:4353": {
-      "id": "VariableID:84c6f57fa30992dac8adc0d2b39152b676868248/1253:4353",
-      "name": "Colors/Gray/6",
+    "VariableID:8c71009049162c0bdff731c86439654a139adb2a/1253:4338": {
+      "id": "VariableID:8c71009049162c0bdff731c86439654a139adb2a/1253:4338",
+      "name": "Colors/Gray/3",
       "collectionId": "VariableCollectionId:c00b1898aa4238933bf90edf9d0a50c3bb2dc673/1253:4329",
       "type": "COLOR",
       "valuesByMode": {
         "761:1": {
-          "r": 0.8509804010391235,
-          "g": 0.8509804010391235,
-          "b": 0.8509804010391235,
-          "a": 1
-        }
-      }
-    },
-    "VariableID:4e76eba9cfb81a5f3ae349bda075551ca5695d31/1253:4345": {
-      "id": "VariableID:4e76eba9cfb81a5f3ae349bda075551ca5695d31/1253:4345",
-      "name": "Colors/Gray/4",
-      "collectionId": "VariableCollectionId:c00b1898aa4238933bf90edf9d0a50c3bb2dc673/1253:4329",
-      "type": "COLOR",
-      "valuesByMode": {
-        "761:1": {
-          "r": 0.9098039269447327,
-          "g": 0.9098039269447327,
-          "b": 0.9098039269447327,
+          "r": 0.9411764740943909,
+          "g": 0.9411764740943909,
+          "b": 0.9411764740943909,
           "a": 1
         }
       }
@@ -1267,16 +1413,58 @@
         }
       }
     },
-    "VariableID:8c71009049162c0bdff731c86439654a139adb2a/1253:4338": {
-      "id": "VariableID:8c71009049162c0bdff731c86439654a139adb2a/1253:4338",
-      "name": "Colors/Gray/3",
+    "VariableID:4e76eba9cfb81a5f3ae349bda075551ca5695d31/1253:4345": {
+      "id": "VariableID:4e76eba9cfb81a5f3ae349bda075551ca5695d31/1253:4345",
+      "name": "Colors/Gray/4",
       "collectionId": "VariableCollectionId:c00b1898aa4238933bf90edf9d0a50c3bb2dc673/1253:4329",
       "type": "COLOR",
       "valuesByMode": {
         "761:1": {
-          "r": 0.9411764740943909,
-          "g": 0.9411764740943909,
-          "b": 0.9411764740943909,
+          "r": 0.9098039269447327,
+          "g": 0.9098039269447327,
+          "b": 0.9098039269447327,
+          "a": 1
+        }
+      }
+    },
+    "VariableID:84c6f57fa30992dac8adc0d2b39152b676868248/1253:4353": {
+      "id": "VariableID:84c6f57fa30992dac8adc0d2b39152b676868248/1253:4353",
+      "name": "Colors/Gray/6",
+      "collectionId": "VariableCollectionId:c00b1898aa4238933bf90edf9d0a50c3bb2dc673/1253:4329",
+      "type": "COLOR",
+      "valuesByMode": {
+        "761:1": {
+          "r": 0.8509804010391235,
+          "g": 0.8509804010391235,
+          "b": 0.8509804010391235,
+          "a": 1
+        }
+      }
+    },
+    "VariableID:c3f96b192ce6f8c9a5ae73efff4cec86b7275fd9/1253:4331": {
+      "id": "VariableID:c3f96b192ce6f8c9a5ae73efff4cec86b7275fd9/1253:4331",
+      "name": "Colors/Gray/10",
+      "collectionId": "VariableCollectionId:c00b1898aa4238933bf90edf9d0a50c3bb2dc673/1253:4329",
+      "type": "COLOR",
+      "valuesByMode": {
+        "761:1": {
+          "r": 0.5137255191802979,
+          "g": 0.5137255191802979,
+          "b": 0.5137255191802979,
+          "a": 1
+        }
+      }
+    },
+    "VariableID:ea041a0c826ae4b2339dff753b9bbbd9496371cb/1253:4335": {
+      "id": "VariableID:ea041a0c826ae4b2339dff753b9bbbd9496371cb/1253:4335",
+      "name": "Colors/Gray/12",
+      "collectionId": "VariableCollectionId:c00b1898aa4238933bf90edf9d0a50c3bb2dc673/1253:4329",
+      "type": "COLOR",
+      "valuesByMode": {
+        "761:1": {
+          "r": 0.125490203499794,
+          "g": 0.125490203499794,
+          "b": 0.125490203499794,
           "a": 1
         }
       }

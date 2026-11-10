@@ -33,7 +33,7 @@
     <section class="metrics" id="metrics" aria-label="变量数量"></section>
     <div class="toolbar">
       <label class="search"><input id="search" type="search" placeholder="搜索 Figma 变量名或别名" aria-label="搜索变量"></label>
-      <label class="mode">颜色模式 <select id="mode"><option value="both">对比两国</option><option value="indonesia">Indonesia</option><option value="kenya">Kenya</option></select></label>
+      <label class="mode">颜色模式 <select id="mode"><option value="both">对比三国</option><option value="indonesia">Indonesia</option><option value="nigeria">Nigeria</option><option value="kenya">Kenya</option></select></label>
     </div>
     <nav class="tabs" id="tabs" aria-label="变量集合"></nav>
     <section class="browser" aria-label="变量浏览器">
@@ -116,9 +116,9 @@
       function render() {
         for(const button of tabs.children)button.setAttribute('aria-selected',String(button.dataset.category===state.category));
         const data=categories.find(([name])=>name===state.category)[1]();renderGroups(data);
-        const color=state.category==='Semantic Color', modes=color?(state.mode==='both'?['indonesia','kenya']:[state.mode]):[];
+        const color=state.category==='Semantic Color', modes=color?(state.mode==='both'?manifest.semanticColorModes:[state.mode]):[];
         head.replaceChildren(make('th','','Name'));
-        if(color)for(const mode of modes)head.append(make('th','',mode==='indonesia'?'印尼 · Indonesia':'肯尼亚 · Kenya'));
+        if(color)for(const mode of modes)head.append(make('th','',({indonesia:'印尼 · Indonesia',nigeria:'尼日利亚 · Nigeria',kenya:'肯尼亚 · Kenya'})[mode]));
         else head.append(make('th','','Value'));
         const entries=state.category==='Text Styles'?Object.entries(data).map(([key,style])=>({path:style.figmaName,name:style.figmaName,style,key})):flatten(data);
         const visible=entries.filter(entry=>(state.group==='all'||entry.group===state.group)&&`${entry.path} ${entry.token?.$extensions?.figma?.alias?.name??''}`.toLocaleLowerCase().includes(state.query));

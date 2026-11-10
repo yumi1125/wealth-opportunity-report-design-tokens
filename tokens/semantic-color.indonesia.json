@@ -356,6 +356,25 @@
           "name": "Text/Processing"
         }
       }
+    },
+    "successful": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.039216,
+          0.572549,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#0A9200"
+      },
+      "$extensions": {
+        "figma": {
+          "variableId": "VariableID:86:2615",
+          "name": "Text/successful"
+        }
+      }
     }
   },
   "Icon": {
